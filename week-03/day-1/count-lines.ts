@@ -11,10 +11,13 @@ const fs = require('fs');
 
 let file: string = "";
 
+function abc(e) {
+    return e.trim().split('\n').length;
+}
+
 try {
     file = fs.readFileSync("my-file.txt", "utf8")
-    let lines: string[] = file.trim().split('\n');
-    console.log("The file has " + lines.length + " line(s).")
+    console.log("The file has " + abc(file) + " line(s).")
 }
 catch (error) {
     console.log("Unable to read file: my-file.txt \n The file has 0 lines.");
