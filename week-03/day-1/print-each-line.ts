@@ -4,8 +4,8 @@
 // then it should print the following error message: "Unable to read file: my-file.txt"
 'use strict';
 
-declare function require(path: string): any;
-    export {};
+declare var require: any;
+//aks for global solution
 
 const fs = require('fs');
 
