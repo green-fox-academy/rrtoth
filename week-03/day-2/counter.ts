@@ -1,7 +1,7 @@
 'use strict';
 
 class Counter {
-    integer: number = 0;
+    integer: number;
 
     constructor(integer: number = 0) {
         this.integer = integer;
@@ -15,7 +15,7 @@ class Counter {
     }
 
     public get() {
-        return this.integer;
+        return this.integer.toString();
     }
 
     public reset() {
