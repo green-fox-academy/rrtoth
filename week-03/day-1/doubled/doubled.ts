@@ -19,4 +19,3 @@ for (let i = 0; i < letters.length; i++) {
 half.forEach(e => { words = words + e });
 
 fs.writeFileSync("chars.txt", words, "utf8");
-
