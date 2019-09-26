@@ -1,6 +1,6 @@
 'use strict';
 
-class Animal {
+export class Animal {
     hunger: number;
     thirst: number;
 
@@ -22,16 +22,6 @@ class Animal {
         this.thirst++;
     }
 }
-
-let dog = new Animal();
-
-for (let i = 0; i < 8; i++) {
-    dog.play();
-    dog.drink();
-}
-
-console.log(dog)
-
 // Create an Animal class
 // Every animal has a hunger value, which is a whole number
 // Every animal has a thirst value, which is a whole number
