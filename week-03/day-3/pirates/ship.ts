@@ -8,9 +8,19 @@ export class Ship {
         this.captain = new Pirate;
         this.pirates = [];
 
-        let a = Math.random() * 50
-        for (let i = 0; i < a; i++) {
+        let a = Math.random() * 2;
+        if (a == 0) {
+            this.captain.parrot = true;
+        }
+
+        let b = Math.random() * 50;
+        let c = Math.random() * 4;
+
+        for (let i = 0; i < b; i++) {
             this.pirates.push(new Pirate);
+            if(c ==0){
+                this.pirates[i].parrot = true;
+            }
         }
     }
 
@@ -43,15 +53,15 @@ export class Ship {
     public battle(enemyShip: Ship) {
         let score = this.pirates.length / this.captain.drunk;
         let enemyScore = enemyShip.pirates.length / enemyShip.captain.drunk;
-        
+
         if (this.captain.parrot == true) {
             score = score * 2;
         }
-        
+
         if (enemyShip.captain.parrot == true) {
             enemyScore = enemyScore * 2;
         }
-        
+
         if (score > enemyScore) {
             for (let i = 0; i < Math.random() * enemyShip.pirates.length; i++) {
                 enemyShip.pirates[i].die();
