@@ -7,7 +7,7 @@
 
 'use strict';
 
-class Sharpie {
+export class Sharpie {
     color: string;
     width: number;
     inkAmount: number;
@@ -22,9 +22,3 @@ class Sharpie {
         this.inkAmount--;
     }
 }
-
-let one = new Sharpie('blue', 20)
-
-one.use()
-
-console.log(one)
