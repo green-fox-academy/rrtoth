@@ -91,7 +91,7 @@ export class Pirate {
                     }
                 } else {
                     enemy.alive = false;
-                    if(enemy.parrot == true){
+                    if (enemy.parrot == true) {
                         enemy.parrot = false;
                         this.parrot = true;
                     }
@@ -103,7 +103,7 @@ export class Pirate {
             console.log("he can't fight, he's dead");
         }
     }
-    
+
     public wakeUp() {
         if (this.awake == false) {
             this.awake = true;
