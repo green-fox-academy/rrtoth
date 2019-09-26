@@ -3,6 +3,7 @@ import { Pirate } from "./pirate"
 export class Ship {
     pirates: Pirate[];
     captain: Pirate;
+    score: number;
 
     public fillShip(): void {
         this.captain = new Pirate;
@@ -22,10 +23,11 @@ export class Ship {
                 this.pirates[i].parrot = true;
             }
         }
-    }
+        this.score = this.pirates.length / this.captain.drunk;
 
-    public addToShip(pirate: Pirate): void {
-        this.pirates.push(pirate);
+        if (this.captain.parrot == true) {
+            this.score = this.score * 2;
+        }
     }
 
     public shipInfo(): void {
@@ -51,25 +53,14 @@ export class Ship {
     }
 
     public battle(enemyShip: Ship) {
-        let score = this.pirates.length / this.captain.drunk;
-        let enemyScore = enemyShip.pirates.length / enemyShip.captain.drunk;
-
-        if (this.captain.parrot == true) {
-            score = score * 2;
-        }
-
-        if (enemyShip.captain.parrot == true) {
-            enemyScore = enemyScore * 2;
-        }
-
-        if (score > enemyScore) {
+        if (this.score > enemyShip.score) {
             for (let i = 0; i < Math.random() * enemyShip.pirates.length; i++) {
                 enemyShip.pirates[i].die();
             }
             this.pirates.forEach(e => { e.drinkSomeRum(Math.random() * 4) })
             this.captain.drinkSomeRum(Math.random() * 4);
 
-        } else if (score < enemyScore) {
+        } else if (this.score < enemyShip.score) {
             for (let i = 0; i < Math.random() * this.pirates.length; i++) {
                 this.pirates[i].die();
             }
