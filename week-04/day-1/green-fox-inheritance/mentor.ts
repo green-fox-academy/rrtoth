@@ -10,8 +10,8 @@ export class Mentor extends Person {
 
     //level options: junior/intermediate/senior
 
-    goal(){
-        return "My goal is: Educate brilliant junior software developers."
+    goal(): string {
+        return "Educate brilliant junior software developers."
     }
 
     protected specific(): string {

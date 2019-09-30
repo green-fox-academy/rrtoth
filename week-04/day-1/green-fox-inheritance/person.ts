@@ -11,19 +11,19 @@ export class Person {
         this._gender = gender;
     }
 
-    protected specific(): string{
+    protected specific(): string {
         return "";
     }
 
     introduce() {
         console.log("Hi, I'm " + this._name + ", a " + this._age + " year old " + this._gender + this.specific() + ".");
     }
-    
-    goal(){
-        return "My goal is: Live for the moment!"
+
+    goal(): string {
+        return "Live for the moment!"
     }
 
-    getGoal(){
-        console.log(goal());
+    getGoal() {
+        console.log("My goal is: " + this.goal());
     }
 }
