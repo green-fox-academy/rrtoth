@@ -1,9 +1,13 @@
 export class Flower {
-    private _waterLevel: number;
-    private _color: string;
+    waterLevel: number;
+    protected _color: string;
 
     constructor(waterLevel: number, color){
-        this._waterLevel = waterLevel;
+        this.waterLevel = waterLevel;
         this._color = color;
     }
 }
+
+let a = new Flower(10, "red")
+
+console.log(a.waterLevel)
