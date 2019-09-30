@@ -1,49 +1,31 @@
-import { Flower } from "./flower"
-import { Tree } from "./tree"
+import { Plant } from "./plant";
 
 export class Garden {
-    private _flowers: Flower[];
-    private _trees: Tree[];
+    private _plants: Plant[]
 
     constructor() {
-        this._flowers = [];
-        this._trees = [];
+        this._plants = [];
     }
 
-    addFlower(flower: Flower) {
-        this._flowers.push(flower)
+    addPlant(plant: Plant) {
+        this._plants.push(plant)
     }
 
-    addTree(tree: Tree) {
-        this._trees.push(tree)
+    plantsInfo() {
+        for (let i = 0; i < this._plants.length; i++) {
+            this._plants[i].needsOrNot();
+
+        }
     }
 
     waterGarden(waterAmount: number) {
+        console.log("\nWatering with " + waterAmount)
         let needToBeWatered = 0;
 
-        for (let i = 0; i < this._trees.length; i++) {
-            if (this._trees[i].waterLevel < 10) {
-                needToBeWatered++;
-            }
-        }
+        this._plants.forEach(e => { e.waterLevel < e.need ? needToBeWatered++ : null });
 
-        for (let i = 0; i < this._flowers.length; i++) {
-            if (this._flowers[i].waterLevel < 5) {
-                needToBeWatered++;
-            }
-        }
+        this._plants.forEach(e => { e.waterLevel < e.need ? e.waterLevel += waterAmount / needToBeWatered * e.absorbs : null });
 
-        for (let i = 0; i < this._flowers.length; i++) {
-            if (this._flowers[i].waterLevel < 5) {
-                this._flowers[i].waterLevel += waterAmount / needToBeWatered * 0.75;
-            }
-        }
-
-        for (let i = 0; i < this._trees.length; i++) {
-            if (this._trees[i].waterLevel < 10) {
-                this._trees[i].waterLevel += waterAmount / needToBeWatered * 0.4;
-            }
-        }
+        this.plantsInfo()
     }
 }
-
