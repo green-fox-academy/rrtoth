@@ -18,8 +18,12 @@ export class Person {
     introduce() {
         console.log("Hi, I'm " + this._name + ", a " + this._age + " year old " + this._gender + this.specific() + ".");
     }
+    
+    goal(){
+        return "My goal is: Live for the moment!"
+    }
 
     getGoal(){
-        console.log("My goal is: Live for the moment!");
+        console.log(goal());
     }
 }
