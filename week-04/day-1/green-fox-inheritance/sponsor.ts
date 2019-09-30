@@ -26,4 +26,3 @@ export class Sponsor extends Person {
         return "Hire brilliant junior software developers."
     }
 }
-

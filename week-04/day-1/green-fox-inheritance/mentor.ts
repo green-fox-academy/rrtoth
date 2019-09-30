@@ -7,7 +7,6 @@ export class Mentor extends Person {
         super(name, age, gender)
         this._level = level;
     }
-
     //level options: junior/intermediate/senior
 
     goal(): string {
@@ -17,5 +16,4 @@ export class Mentor extends Person {
     protected specific(): string {
         return " " + this._level + " mentor";
     }
-
 }

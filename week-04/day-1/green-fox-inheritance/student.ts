@@ -15,8 +15,13 @@ export class Student extends Person {
     }
 
     protected specific(): string {
-        return " from " + this._previousOrgaization + " who skipped "
-            + this._skippedDays + " days from the course already";
+        if (this._skippedDays == 0) {
+            return " from " + this._previousOrgaization
+                + " who hasn't skipped any days from the course so far";
+        } else {
+            return " from " + this._previousOrgaization + " who skipped "
+                + this._skippedDays + " days from the course already";
+        }
     }
 
     skipDays(numberOfDays?) {
