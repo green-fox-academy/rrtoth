@@ -14,10 +14,9 @@ export class Student extends Person {
         console.log("My goal is: Be a junior software developer.");
     }
 
-    introduce() {
-        console.log("Hi, I'm " + this._name + ", a " + this._age + " year old "
-            + this._gender + " from " + this._previousOrgaization + " who skipped "
-            + this._skippedDays + " days from the course already.");
+    protected specific(): string{
+        return " from " + this._previousOrgaization + " who skipped "
+        + this._skippedDays + " days from the course already.";
     }
 
     skipDays(numberOfDays?){
@@ -30,3 +29,5 @@ export class Student extends Person {
 }
 
 let student1 = new Student;
+
+student1.introduce()
