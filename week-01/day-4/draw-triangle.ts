@@ -8,4 +8,3 @@ for(let a = 1; a <= lineCount; a++) {
 	stars = star + stars;
 	console.log(stars);
 }
-
