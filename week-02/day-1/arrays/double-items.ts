@@ -3,8 +3,6 @@
 let drinks: string[] = ['Gin', 'Whiskey', 'Wine', 'Beer'];
 let doubleIt: string[] = [];
 
-drinks.forEach(function (double) {
-	doubleIt.push(double + double);
-});
+drinks.forEach(e => { doubleIt.push(e + e) });
 
 console.log(doubleIt);
