@@ -1,7 +1,5 @@
 'use strict'
 
-//these exercises are getting more and more annoying
-
 let buzz: number = 1;
 
 while (buzz <= 100) {
@@ -16,4 +14,3 @@ while (buzz <= 100) {
 	}
 	buzz++;
 }
-

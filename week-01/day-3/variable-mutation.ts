@@ -1,33 +1,38 @@
 'use strict';
 
-let a: number = 3 + 10;
+let a: number = 3;
+a += 10;
 // make it bigger by 10
 
 console.log(a);
 
-let b: number = 100 - 7;
+let b: number = 100;
+b -= 7;
 // make it smaller by 7
 
 console.log(b);
 
-let c: number = 44 * 2;
+let c: number = 44;
+c = c * 2;
 // double c's value
 
 console.log(c);
 
-let d: number = 125 / 5;
+let d: number = 125;
+d = d / 5;
 // divide d's value by 5
 
 console.log(d);
 
-let e: number = 8 ** 3;
+let e: number = 8;
+e = e ** 3;
 // what's the cube of e's value?
 
 console.log(e);
 
 let f1: number = 123;
 let f2: number = 345;
-let bigger: boolean = f1>f2;
+let bigger: boolean = f1 > f2;
 
 console.log(bigger);
 // tell if f1 is bigger than f2 (as a boolean)
@@ -59,7 +64,3 @@ let div5: boolean = j % 5 == 0;
 
 console.log(div3 && div5);
 // tell if j is divisible by 3 or 5 (as a boolean)
-
-/*console.log(k);
-I have no idea why the previous line has "k" and not "j" but I thought I would leave this here
-*/

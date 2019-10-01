@@ -5,16 +5,16 @@ let out: number = 0;
 
 // if a is even increment out by one
 
-if(a % 2 === 0) {
-    out = out + 1;
-} 
+if (a % 2 === 0) {
+    out = out++;
+}
 
 console.log(out);
 
 let b: number = 13;
 let out2: string = '';
 
-if(b >= 10 && b <= 20) {
+if (b >= 10 && b <= 20) {
     out2 = "Sweet!";
 } else if (b < 10) {
     out2 = "Less!";
@@ -37,8 +37,9 @@ if (credits >= 50 && isBonus == false) {
 } else if (credits < 50 && isBonus == false) {
     c = c - 1;
 } else {
-    c = c;	
+    c = c;
 }
+//CHECK 
 
 // if credits are at least 50,
 // and is_bonus is false decrement c by 2
@@ -48,17 +49,17 @@ if (credits >= 50 && isBonus == false) {
 
 console.log(c);
 
-let d: number =  8;
+let d: number = 8;
 let time: number = 120;
 let out3: string = '';
 
 
 if (d % 4 == 0 && time <= 200) {
-	out3 = "check";
+    out3 = "check";
 } else if (time > 200) {
-	out3 = "Time out";
+    out3 = "Time out";
 } else {
-	out3 = "Run Forest Run!";
+    out3 = "Run Forest Run!";
 }
 
 
