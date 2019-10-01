@@ -5,5 +5,5 @@ export abstract class Instrument {
         this.name = name
     }
 
-    play() { }
+    abstract play() 
 }

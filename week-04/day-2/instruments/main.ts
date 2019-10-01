@@ -1,6 +1,4 @@
-import { ElectricGuitar } from "./stringed-instrument-desc"
-import { BassGuitar } from "./stringed-instrument-desc"
-import { Violin } from "./stringed-instrument-desc"
+import { ElectricGuitar, BassGuitar, Violin } from "./stringed-instrument-desc"
 
 // console.log(
 //     'Test 1, create Electric Guitar, Bass Guitar and Violin with default strings.'

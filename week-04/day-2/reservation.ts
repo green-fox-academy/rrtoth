@@ -12,20 +12,20 @@ class Reservation implements ReservationY {
         
         let a: string[] = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ".split('');
         for (let i = 0; i < 8; i++) {
-            this.id += (a[Math.floor(Math.random() * 35)])
+            this.id += (a[Math.floor(Math.random() * a.length)])
         }
 
         let days: string[] = ["MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"]
-        this.dow = days[Math.floor(Math.random() * 7)]
-    }
-
-    getDowBooking(): string {
-        return " for " + this.dow
+        this.dow = days[Math.floor(Math.random() * days.length)]
     }
 
     getCodeBooking(): string {
         return "Booking# " + this.id
 
+    }
+
+    getDowBooking(): string {
+        return " for " + this.dow
     }
 }
 

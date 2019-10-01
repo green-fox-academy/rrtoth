@@ -5,7 +5,7 @@ export abstract class ReptileAndBird extends Animal {
         super(name, age, gender, legs, integument)
     }
 
-    breed() {
+    breed(): string {
         return "laying eggs."
     }
 }
@@ -27,7 +27,7 @@ export class Mammal extends Animal {
         super(name, age, gender, legs, integument)
     }
 
-    breed() {
+    breed(): string {
         return "pushing miniature versions out."
     }
 }

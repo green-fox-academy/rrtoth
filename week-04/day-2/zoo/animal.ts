@@ -17,5 +17,5 @@ export abstract class Animal {
         return this.name
     }
 
-    breed() { }
+    abstract breed(): string
 }

@@ -1,5 +1,4 @@
-import { Vehicle } from "./flyable"
-import { Flyable } from "./flyable"
+import { Vehicle, Flyable } from "./flyable"
 
 export class Helicopter extends Vehicle implements Flyable {
     constructor(doors: number = 4, speed?: number, seats: number = 6, type?: string) {
