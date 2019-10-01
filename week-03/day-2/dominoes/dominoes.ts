@@ -39,3 +39,8 @@ for (let j = 0; j < 5; j++) {
 }
 
 console.log(b)
+
+console.log("\nPrintable interface exercise")
+for (let domino of dominoes) {
+    domino.printAllFields();
+}
