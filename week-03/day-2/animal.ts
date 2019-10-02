@@ -1,5 +1,7 @@
 'use strict';
 
+import * as test from 'tape'
+
 export class Animal {
     hunger: number;
     thirst: number;
@@ -22,10 +24,29 @@ export class Animal {
         this.thirst++;
     }
 }
-// Create an Animal class
-// Every animal has a hunger value, which is a whole number
-// Every animal has a thirst value, which is a whole number
-// when creating a new animal object these values are created with the default 50 value
-// Every animal can eat() which decreases their hunger by one
-// Every animal can drink() which decreases their thirst by one
-// Every animal can play() which increases both by one
+
+let a = new Animal
+
+a.eat()
+a.drink()
+a.drink()
+a.drink()
+a.eat()
+a.drink()
+a.play()
+
+test("animal", t => {
+    let actual = a.hunger;
+    let expected = 49;
+
+    t.equal(actual, expected);
+    t.end()
+})
+
+test("animal", t => {
+    let actual = a.thirst;
+    let expected = 47;
+
+    t.equal(actual, expected);
+    t.end()
+})
