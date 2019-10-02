@@ -1,0 +1,6 @@
+7296: 0 Cow, 1 Bull	||	1 guesses so far
+5437: 0 Cow, 3 Bull	||	2 guesses so far
+3578: 2 Cow, 1 Bull	||	3 guesses so far
+3178: 2 Cow, 1 Bull	||	4 guesses so far
+3278: 2 Cow, 1 Bull	||	5 guesses so far
+3748: YOU WIN

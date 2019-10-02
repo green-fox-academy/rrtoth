@@ -48,9 +48,14 @@ let numberToGuess = fs.readFileSync("index.txt", "utf-8").toString().split('')
 let test = new CAB(numberToGuess[0], numberToGuess[1], numberToGuess[2], numberToGuess[3])
 
 //get the guesses
-let guess = fs.readFileSync("current-guess.txt", "utf-8").toString().split('')
-let guesses = new CAB(guess[0], guess[1], guess[2], guess[3])
+let guess1 = fs.readFileSync("current-guess.txt", "utf-8")
+let guess2 = guess1.toString().split('')
+let guesses = new CAB(guess2[0], guess2[1], guess2[2], guess2[3])
 
 //make a file with the results
-let result = guess.toString() + ": " + test.checkCow(guesses) + " Cow, " + test.checkBull(guesses) + " Bull\n";
-fs.appendFileSync("result.txt", result, "utf8");
+
+let counter = fs.readFileSync("result.txt", "utf-8").toString().split('\n').length;
+let result = guess1 + ": " + test.checkCow(guesses) + " Cow, " + test.checkBull(guesses) + " Bull\t||\t" + counter + " guesses so far" + "\n";
+guess2.join() == numberToGuess.join() ? fs.appendFileSync("result.txt", guess1 +": YOU WIN", "utf8") : fs.appendFileSync("result.txt", result, "utf8");
+
+//problem to fix: checkBull()
