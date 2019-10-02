@@ -7,6 +7,9 @@
 
 'use strict';
 
+import * as test from 'tape'
+import { userInfo } from 'os';
+
 export class Sharpie {
     color: string;
     width: number;
@@ -22,3 +25,31 @@ export class Sharpie {
         this.inkAmount--;
     }
 }
+
+let a = new Sharpie('red', 2, 10)
+a.use()
+a.use()
+a.use()
+a.use()
+
+test("Sharpie", t => {
+    let actual = a.color
+    let expected = "red"
+
+    t.equal(actual, expected)
+    t.end()
+})
+test("Sharpie", t => {
+    let actual = a.width
+    let expected = 2
+
+    t.equal(actual, expected)
+    t.end()
+})
+test("Sharpie", t => {
+    let actual = a.inkAmount
+    let expected = 6
+
+    t.equal(actual, expected)
+    t.end()
+})
