@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            height: 80vh;
+            align-items: stretch;
+            margin: 0;
+            padding: 0;
+        }
+        .header {
+            background-color: turquoise;
+            height: 50px;
+        }
+        .content {
+            display: flex;
+            justify-content: space-between;
+            height: 80vh
+        }
+        .cont {
+            background-color: red;
+            width: calc(100vw - 210px);
+        }
+        .sidebar {
+            width: 90px;
+        }
+        .left {
+            background-color: orange;
+        }
+        .right {
+            background-color: purple;
+        }
+        .footer {
+            background-color: blue;
+            height: 50px
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header"></div>
+        <div class="content">
+            <div class="sidebar left"></div>
+            <div class="cont">
+            </div>
+            <div class="sidebar right"></div>
+        </div>
+        <div class="footer"></div>
+    </div>
+</body>
+
+</html>
