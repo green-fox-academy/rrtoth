@@ -24,14 +24,19 @@
 
     <script src="content-1.js"></script> -->
 </body>
-
 <script>
     'use strict';
 
     let list = ["apple", "balloon", "cat", "animals"]
 
-    for (let i = 1; i < list.length; i++) {
-        document.querySelector("." + list[i]).append(" " + document.querySelector("." + list[i - 1]).innerHTML)
+    //cat not strong
+    //for (let i = 0; i < list.length - 1; i++) {
+    //    document.querySelector("." + list[i]).append(" " + document.querySelector("." + list[list.length - 1]).textContent)
+    //}
+
+    //cat strong
+    for (let i = 0; i < list.length - 1; i++) {
+        document.querySelector("." + list[i]).innerHTML = document.querySelector("." + list[i]).innerHTML + " " + document.querySelector("." + list[list.length - 1]).innerHTML
     }
 </script>
 
