@@ -44,21 +44,27 @@
     <script>
         'use strict'
 
+
         for (let i = 0; i < 100; i++) {
-            let newDiv = document.createElement("div")
+            setTimeout(() => {
+                let newDiv = document.createElement("div")
 
-            newDiv.textContent = [i]
+                newDiv.textContent = [i]
 
-            let temp = "prime";
-            for (let j = 2; j < i; j++) {
-                if (i % j == 0) {
-                    temp = "not-prime"
+                let temp = "not-prime"
+                if (i > 1) {
+                    temp = "prime";
+                    for (let j = 2; j < i; j++) {
+                        if (i % j == 0) {
+                            temp = "not-prime"
+                        }
+                    }
                 }
-            }
 
-            newDiv.setAttribute("class", temp)
+                newDiv.setAttribute("class", temp)
 
-            document.querySelector("section").appendChild(newDiv)
+                document.querySelector("section").appendChild(newDiv)
+            }, 100 * i);
         }
         //   1: generate 100 divs to the <section> element and add index numbers to it as the element's textContent
 
