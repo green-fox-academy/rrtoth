@@ -44,28 +44,37 @@
     <script>
         'use strict'
 
-
-        for (let i = 0; i < 100; i++) {
-            setTimeout(() => {
-                let newDiv = document.createElement("div")
-
-                newDiv.textContent = [i]
-
-                let temp = "not-prime"
-                if (i > 1) {
-                    temp = "prime";
-                    for (let j = 2; j < i; j++) {
-                        if (i % j == 0) {
-                            temp = "not-prime"
-                        }
+        const primeValidator = (number) => {
+            let temp = "not-prime"
+            
+            if (number > 1) {
+                temp = "prime";
+                for (let j = 2; j < number; j++) {
+                    if (number % j == 0) {
+                        temp = "not-prime"
                     }
                 }
-
-                newDiv.setAttribute("class", temp)
-
-                document.querySelector("section").appendChild(newDiv)
-            }, 100 * i);
+            }
+            
+            let divs = document.querySelectorAll("div")
+            divs[number].setAttribute("class", temp)
         }
+
+        for (let i = 0; i < 100; i++) {
+            let newDiv = document.createElement("div")
+            newDiv.textContent = [i]
+
+            document.querySelector("section").appendChild(newDiv)
+        }
+
+        let counter = 0;
+
+        const myInterval = setInterval(() => {
+            primeValidator(counter)
+            counter++
+            counter == 100 ? clearInterval(myInterval) : null
+        }, 100)
+
         //   1: generate 100 divs to the <section> element and add index numbers to it as the element's textContent
 
         //   2: Create a function that adds a 'not-prime' class to a div if it's not a prime and 'prime' if it is
