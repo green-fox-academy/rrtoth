@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Bomb defuse</title>
+    <style>
+        .boom {
+            margin: 0;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-right: -50%;
+            transform: translate(-50%, -50%)
+        }
+    </style>
+</head>
+
+<body>
+    <div class="display">5</div>
+    <button>Defuse</button>
+</body>
+<script>
+    let display = document.getElementsByClassName("display")[0]
+    let newImage = document.createElement("img")
+    newImage.setAttribute("src", "https://www.ice-online.info/boom.png")
+    newImage.setAttribute("width", "800px")
+    newImage.classList.add("boom")
+
+    let myInterval = setInterval(() => {
+        display.innerHTML--
+        if (display.innerHTML == 0) {
+            display.innerHTML = "";
+            document.querySelector("body").style.backgroundColor = "black"
+            display.appendChild(newImage);
+            document.querySelector("body").removeChild(document.querySelector("button"))
+            clearInterval(myInterval)
+        }
+    }, 1000)
+
+    let button = document.querySelector("button")
+
+    button.onclick = () => {
+        clearInterval(myInterval)
+        display.innerHTML = "Bomb defused"
+    }
+
+    // Create a timeout that will set the display to "Bomb exploded" in 10 seconds
+    // If you click on the button set the display to "Bomb defused" and stop the timeout
+    // Extra: create an interval which will update the remaining seconds in the display
+</script>
+
+</html>
