@@ -34,19 +34,26 @@ app.get('/greeter/', (req, res) => {
         let name = req.query.name;
         let title = req.query.title;
 
-        message["welcome_message"] = `Oh, hi there ${name}, my dear ${title}!`
+        message["welcome_message"] = `Oh, hi there ${name}, my dear ${title}!`;
     } else if (!req.query.name && !req.query.title) {
         message["error"] = "Please provide a name and a title!";
-    } else if(!req.query.name && req.query.title){
+    } else if (!req.query.name && req.query.title) {
         message["error"] = "Please provide a name!";
-    } else if(!req.query.name && req.query.title){
+    } else if (!req.query.name && req.query.title) {
         message["error"] = "Please provide a title!";
     }
 
     res.send(message)
 })
 
+app.get('/appenda', (req, res) => {
+    res.status(404)
+    res.send()
+})
 
+app.get('/appenda/:appenda', (req, res) => {
+    res.send({ appended: `${req.params.appenda}a` })
+})
 
 app.listen(PORT, () => {
     console.log(`The server is up and running on ${PORT}`);
