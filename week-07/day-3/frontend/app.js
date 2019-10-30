@@ -2,11 +2,10 @@
 
 const express = require('express');
 const path = require('path');
-
-const app = express();
 const PORT = 8080;
-
+const app = express();
 app.use(express.static('assets'));
+app.use(express.json())
 
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'index.html'));
@@ -39,7 +38,7 @@ app.get('/greeter/', (req, res) => {
         message["error"] = "Please provide a name and a title!";
     } else if (!req.query.name && req.query.title) {
         message["error"] = "Please provide a name!";
-    } else if (!req.query.name && req.query.title) {
+    } else if (req.query.name && !req.query.title) {
         message["error"] = "Please provide a title!";
     }
 
@@ -54,6 +53,36 @@ app.get('/appenda', (req, res) => {
 app.get('/appenda/:appenda', (req, res) => {
     res.send({ appended: `${req.params.appenda}a` })
 })
+
+const sum = (input) => {
+    let sum = 0;
+    for (let i = 1; i <= input; i++) {
+        sum += i;
+    }
+    return sum;
+}
+
+const fact = (input) => {
+    let fact = 1;
+    for (let i = 1; i <= input; i++) {
+        fact *= i;
+    }
+    return fact;
+}
+
+app.post('/dountil/:action', (req, res) => {
+    let until = req.body.until
+    if (req.params.action) {
+        if (req.params.action == 'factor') {
+            res.send({ result: fact(until) })
+        } else if (req.params.action == 'sum') {
+            res.send({ result: sum(until) })
+        } else {
+            res.send({ result: "Please provide a number!" })
+        }
+    }
+})
+
 
 app.listen(PORT, () => {
     console.log(`The server is up and running on ${PORT}`);
