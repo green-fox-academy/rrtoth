@@ -18,26 +18,15 @@ conn.connect((err) => {
     console.log('Connected!');
 });*/
 
-
-//gets current timestamp
-var date = new Date(1572521058623);
-// var timestamp = date.getTime()
-
-// var cdate = date.getDate();
-// var month = date.getMonth();
-// var year = date.getFullYear();
-
-9007199254740991
-
-console.log(date)
-
-//gets date MM
+//gets date 10/31/2019 12:24:18 PM format
 const printCurrentDate = (timestamp) => {
     let date = new Date(timestamp);
+    let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+    let daysOfTheWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
-    return `${date.toLocaleDateString()} ${date.toLocaleTimeString()}`
+    return `${months[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()} ${daysOfTheWeek[date.getDay()]} ${date.toLocaleTimeString()}`
 }
-console.log(printCurrentDate(date))
+
 
 /*
 app.get('/', function (req, res) {
