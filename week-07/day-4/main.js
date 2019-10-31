@@ -5,18 +5,18 @@ const PORT = 3000;
 const env = require('dotenv').config();
 
 app.use(express.json());
-/*
+
 let conn = mysql.createConnection ({
     host: process.env.DB_HOST,
     user: process.env.DB_USER,
     password: process.env.DB_PASS,
-    database: process.env.DB_NAME
+    database: process.env.DB_NAME,
 });
 
 conn.connect((err) => {
     if (err) throw err;
     console.log('Connected!');
-});*/
+});
 
 //gets date 10/31/2019 12:24:18 PM format
 const printCurrentDate = (timestamp) => {
@@ -27,11 +27,8 @@ const printCurrentDate = (timestamp) => {
     return `${months[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()} ${daysOfTheWeek[date.getDay()]} ${date.toLocaleTimeString()}`
 }
 
-
-/*
 app.get('/', function (req, res) {
-    conn.query(`SELECT * FROM ${database};`, (err, rows) => {
-        console.log(rows);
+    conn.query(`SELECT * FROM posts;`, (err, rows) => {
         if (err) {
             console.log(err.toString());
         }
@@ -40,4 +37,3 @@ app.get('/', function (req, res) {
 });
 
 app.listen(PORT);
-*/
