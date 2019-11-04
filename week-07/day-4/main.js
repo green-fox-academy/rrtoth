@@ -18,17 +18,14 @@ conn.connect((err) => {
     console.log('Connected!');
 });
 
-//gets date 10/31/2019 12:24:18 PM format
-// const printCurrentDate = (timestamp) => {
-//     let date = new Date(timestamp);
-//     let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
-//     let daysOfTheWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-
-//     return `${months[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()} ${daysOfTheWeek[date.getDay()]} ${date.toLocaleTimeString()}`
-// }
+app.get('/hello', (req, res) => {
+    res.send("Hello World!");
+});
 
 app.get('/posts', (req, res) => {
-    conn.query('SELECT * FROM posts;', (err, rows) => {
+    conn.query('SELECT * FROM posts\
+                LEFT JOIN users\
+                    ON users.pID;', (err, rows) => {
         if (err) {
             console.log(err.toString());
         }
@@ -42,39 +39,59 @@ app.post('/posts/:post', (req, res) => {
     let post = `INSERT INTO posts(title, url, timestamp, score, oID) VALUES (${input.title}, ${input.url}, ${date}, 0, 0);`
 
     conn.query(post, (err, result) => {
-        if (err) throw err;
+        if (err) {
+            console.log(err.toString());
+        }
+        res.send('ok')
     })
 })
 
 app.post('/posts/:id/:action', (req, res) => {
-    let action = req.params.action
-    let id = parseInt(req.params.id)
+    let id = parseInt(req.params.id.toString())
 
-    if (action) {
-        let score
+    if (req.params.action) {
+        let action = req.params.action
 
-        conn.query(`SELECT pId FROM posts WHERE pId = ${id}`, (err, result) => {
-            if (err) throw err;
-            score = result.pId;
-            res.send('ok')
-        })
+        conn.query(`SELECT * FROM posts WHERE pId = ${id}`, (err, result) => {
+            if (err) {
+                console.log(err);
+            }
 
-        if (action == 'upvote') {
-            conn.query(`UPDATE posts SET score = ${score + 1} WHERE pId = ${id}`, (err, result) => {
-                if (err) throw err;
-                // conn.query('SELECT * FROM posts', (err, result) => {
-                //     if (err) throw err;
-                //     res.send(result)
+            let score = parseInt((result[0].pId).toString())
+            console.log(score)
+            if (action == 'upvote' || action == 'downvote') {
+                if (action == 'upvote') {
+                    conn.query(`UPDATE posts SET score = ${score + 1} WHERE pId = ${id}`, (err, result) => {
+                        if (err) {
+                            console.log(err.toString());
+                        }
+                        conn.query('SELECT * FROM posts', (err, result) => {
+                            if (err) throw err;
+                            res.send(result)
+                        })
+                    })
+                } else if (action == 'downvote') {
+                    conn.query(`UPDATE posts SET score = ${score - 1} WHERE pId = ${id}`, (err, result) => {
+                        if (err) {
+                            console.log(err.toString());
+                        }
+                        conn.query('SELECT * FROM posts', (err, result) => {
+                            if (err) throw err;
+                            res.send(result)
+                        })
+                    })
+                }
+                // conn.query(`SELECT * FROM posts WHERE pId = ${id}`, (err, result) => {
+                //     if (err) {
+                //         console.log(err);
+                //     }
+                //     let vote = parseInt((result[0].vote).toString())
+                //     conn.query(`UPDATE users SET vote = ${vote + 1} WHERE oID`)
                 // })
-                res.send('success')
-            })
-        } else if (action == 'downvote') {
-            conn.query(`UPDATE posts SET score = ${score - 1} WHERE pId = ${id}`, (err, result) => {
-                res.send('success')
-            })
-        } else {
-            res.send({ error: 'wrong action' })
-        }
+            } else {
+                res.send('wrong action')
+            }
+        })
     }
 })
 
