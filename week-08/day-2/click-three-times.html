@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <button>wait 5 seconds</button>
+    <script>
+        'use strict';
+
+        let button = document.querySelector('button')
+
+        let counter = 0;
+        let stop = document.querySelectorAll('p').length
+
+        let func = () => {
+            if (stop < 1) {
+                if (event.timeStamp >= 5000) {
+                    counter++
+                    if (counter >= 3) {
+                        let temp = document.createElement("p");
+
+                        temp.innerHTML = '5 seconds elapsed and clicked 3 times';
+                        document.querySelector('body').appendChild(temp)
+                        stop++
+                    }
+                } else {
+                    stop = 2;
+                }
+            }
+        }
+
+
+        button.addEventListener('click', func)
+    </script>
+</body>
+
+</html>
