@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="container">
+    </div>
+    <button id="button">Gimme a joke</button>
+    <script>
+        'use strict';
+
+        let button = document.getElementById('button')
+        let url = 'http://api.icndb.com/jokes/random'
+
+        button.addEventListener('click', () => {
+            let temp = document.createElement('p')
+
+            let myPromise = new Promise((resolve, reject) => {
+                let request = new XMLHttpRequest();
+                request.open('GET', url);
+                request.onload = () => {
+                    resolve(JSON.parse(request.response));
+                };
+                request.send();
+            }).then((res) => {
+                temp.innerHTML = res.value.joke;
+            }).catch((err) => {
+                temp.innerHTML = "can't get joke"
+            })
+
+            document.getElementById('container').appendChild(temp)
+        })
+    </script>
+</body>
+
+</html>
