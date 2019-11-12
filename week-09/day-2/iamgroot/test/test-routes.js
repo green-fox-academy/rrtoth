@@ -36,7 +36,3 @@ test('groot endpoint, no param', (t) => {
             t.end()
         })
 })
-
-// Write a test where you check:
-// Without giving a parameter the status is not ok,
-// and the given error response is the same as expected
