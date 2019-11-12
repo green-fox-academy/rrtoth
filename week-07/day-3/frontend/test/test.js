@@ -106,11 +106,117 @@ test('appenda test #1', (t) => {
 test('appenda test #2', (t) => {
     request(app)
         .get('/appenda/kuty')
+        .expect('Content-Type', /json/)
         .expect(200)
         .end((err, res) => {
             let appendaResponse = { appended: 'kutya' }
+
             t.error(err, 'no err')
             t.deepEqual(res.body, appendaResponse, 'correct response')
+            t.end()
+        });
+})
+
+test('dountil test #1', (t) => {
+    request(app)
+        .post('/dountil/sum')
+        .send({ until: 5 })
+        .expect('Content-Type', /json/)
+        .expect(200)
+        .end((err, res) => {
+            let dountilResponse = { result: 15 }
+
+            t.error(err, 'no err')
+            t.deepEqual(res.body, dountilResponse, 'correct response')
+            t.end()
+        });
+})
+
+test('dountil test #2', (t) => {
+    request(app)
+        .post('/dountil/factor')
+        .send({ until: 5 })
+        .expect('Content-Type', /json/)
+        .expect(200)
+        .end((err, res) => {
+            let dountilResponse = { result: 120 }
+
+            t.error(err, 'no err')
+            t.deepEqual(res.body, dountilResponse, 'correct response')
+            t.end()
+        });
+})
+
+test('dountil test #3', (t) => {
+    request(app)
+        .post('/dountil/factor')
+        .expect('Content-Type', /json/)
+        .expect(400)
+        .end((err, res) => {
+            let dountilResponse = { result: "Please provide a number!" }
+
+            t.error(err, 'no err')
+            t.deepEqual(res.body, dountilResponse, 'correct response')
+            t.end()
+        });
+})
+
+test('dountil test #4', (t) => {
+    request(app)
+        .post('/dountil')
+        .send({ until: 5 })
+        .expect('Content-Type', /json/)
+        .expect(400)
+        .end((err, res) => {
+            let dountilResponse = { result: "Please provide an action!" }
+
+            t.error(err, 'no err')
+            t.deepEqual(res.body, dountilResponse, 'correct response')
+            t.end()
+        });
+})
+
+test('dountil test #5', (t) => {
+    request(app)
+        .post('/dountil/asd')
+        .send({ until: 5 })
+        .expect('Content-Type', /json/)
+        .expect(400)
+        .end((err, res) => {
+            let dountilResponse = { result: "Please provide a valid action!" }
+
+            t.error(err, 'no err')
+            t.deepEqual(res.body, dountilResponse, 'correct response')
+            t.end()
+        });
+})
+
+test('dountil test #6', (t) => {
+    request(app)
+        .post('/dountil/sum')
+        .send({ until: 'asd' })
+        .expect('Content-Type', /json/)
+        .expect(400)
+        .end((err, res) => {
+            let dountilResponse = { result: "Please provide a valid number!" }
+
+            t.error(err, 'no err')
+            t.deepEqual(res.body, dountilResponse, 'correct response')
+            t.end()
+        });
+})
+
+test('dountil test #7', (t) => {
+    request(app)
+        .post('/dountil/sum')
+        .send({ until: 5.2 })
+        .expect('Content-Type', /json/)
+        .expect(400)
+        .end((err, res) => {
+            let dountilResponse = { result: "Please provide a valid number!" }
+
+            t.error(err, 'no err')
+            t.deepEqual(res.body, dountilResponse, 'correct response')
             t.end()
         });
 })
