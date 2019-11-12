@@ -91,3 +91,26 @@ test('greeter test #4', (t) => {
             t.end()
         });
 })
+
+test('appenda test #1', (t) => {
+    request(app)
+        .get('/appenda')
+        .expect(400)
+        .end((err, res) => {
+            t.error(err, 'no err')
+            t.deepEqual(res.body, {}, 'correct response')
+            t.end()
+        });
+})
+
+test('appenda test #2', (t) => {
+    request(app)
+        .get('/appenda/kuty')
+        .expect(200)
+        .end((err, res) => {
+            let appendaResponse = { appended: 'kutya' }
+            t.error(err, 'no err')
+            t.deepEqual(res.body, appendaResponse, 'correct response')
+            t.end()
+        });
+})
