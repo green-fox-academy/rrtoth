@@ -6,7 +6,8 @@ const app = require('../routes');
 
 test('groot endpoint', (t) => {
     request(app)
-        .get('/groot/?message=asd')
+        .get('/groot')
+        .query({ message: 'asd'})
         .expect('Content-Type', /json/)
         .expect(200)
         .end((err, res) => {
